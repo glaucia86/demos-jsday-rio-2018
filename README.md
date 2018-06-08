@@ -4,7 +4,7 @@
   <img src="https://i.imgur.com/pA6SRQ6.gif"/>  
 </p>
 
-Repositório responsável pelas demos realizadas durante o evento do MVP Conf 2018, sobre: **JS Day Rio 2018** [AQUI](http://rio.jsday.com.br/)
+Repositório responsável pelas demos realizadas durante o evento do JS Day Rio, sobre: **JS Day Rio 2018** [AQUI](http://rio.jsday.com.br/)
 
 
 ## Recursos Utilizados no Desenvolvimento da Aplicação: :rocket:
