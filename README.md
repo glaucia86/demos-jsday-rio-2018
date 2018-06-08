@@ -62,7 +62,7 @@ OBS.: Quando seguir o passo da instalação do **node-gyp** é de suma importân
 
 ```
 
-Seguindo todos esses passos, vocês estará para pronta para instalar as depedências do projeto na pasta do projeto! ;)
+Seguindo todos esses passos, vocês estarão prontos para instalar as depedências na pasta do projeto! ;)
 
 
 ## Dúvidas?! :triangular_flag_on_post:
