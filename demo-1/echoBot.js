@@ -1,18 +1,18 @@
 /**
  * 
  * Arquivo: echoBot.js
- * Data: 24/02/2018
+ * Data: 09/06/2018
  * Descrição: Desenvolvimento de um Bot via Bot Emulator.
  * Author: Glaucia Lemos
  *
  */
 
-var restify = require("restify");
-var builder = require("botbuilder");
+const restify = require("restify");
+const builder = require("botbuilder");
 
 //Configuração do Server via Restify:
-var server = restify.createServer();
-server.listen(process.env.port || process.env.PORT || 3978, function() {
+let server = restify.createServer();
+server.listen(process.env.port || process.env.PORT || 3978, () => {
   console.log(
     "%s Aplicação está executando na porta %s",
     server.name,
@@ -21,7 +21,7 @@ server.listen(process.env.port || process.env.PORT || 3978, function() {
 });
 
 //Criação do chat connector para comunicar com o serviço do Bot Framework:
-var connector = new builder.ChatConnector({
+let connector = new builder.ChatConnector({
   appId: "",
   appPassword: ""
 });
@@ -30,6 +30,6 @@ var connector = new builder.ChatConnector({
 server.post("/api/messages", connector.listen());
 
 //Aqui entra os nossos diálogos:
-var bot = new builder.UniversalBot(connector, function(session) {
+let bot = new builder.UniversalBot(connector, (session) => {
   session.send("Você disse: %s", session.message.text);
 });

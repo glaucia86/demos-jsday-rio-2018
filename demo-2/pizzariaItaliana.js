@@ -1,7 +1,7 @@
 /**
  *
  * Arquivo: pizzariaItaliana.js
- * Data: 26/02/2018
+ * Data: 09/06/2018
  * Descrição: Desenvolvimento de um Bot de pedido de pizza integrado com o LUIS.
  * Author: Glaucia Lemos
  *
@@ -13,23 +13,23 @@ require("dotenv-extended").load({
   path: "../.env"
 });
 
-var moment = require("moment");
-var builder = require("botbuilder");
-var restify = require("restify");
+const moment = require("moment");
+const builder = require("botbuilder");
+const restify = require("restify");
 
-var server = restify.createServer();
+const server = restify.createServer();
 
 //===> Configuração do Bot:
-var connector = new builder.ChatConnector({
+let connector = new builder.ChatConnector({
   appId: "",
   appPassword: ""
 });
 
-var bot = new builder.UniversalBot(connector);
+let bot = new builder.UniversalBot(connector);
 
 //===> Configuração LUIS:
-var recognizer = new builder.LuisRecognizer(process.env.LUIS_MODEL_URL);
-var intents = new builder.IntentDialog({ recognizers: [recognizer] });
+let recognizer = new builder.LuisRecognizer(process.env.LUIS_MODEL_URL);
+let intents = new builder.IntentDialog({ recognizers: [recognizer] });
 
 //===> Configuração dos 'Intents'(Intenções):
 
@@ -50,7 +50,7 @@ intents.matches("Pedir", [
       "Mussarela",
       "Especializada"
     ];
-    var entityPizza = builder.EntityRecognizer.findEntity(args.entities, "Pizza");
+    let entityPizza = builder.EntityRecognizer.findEntity(args.entities, "Pizza");
 
     //Aqui estaremos verificando com o LUIS os melhores 'matches' para a solicitação
     //do pedido da pizza através da Entidade: Pizza:
@@ -65,7 +65,7 @@ intents.matches("Pedir", [
       next({ response: match });
     }
   },
-  function(session, results) {
+  (session, results) => {
     //Aqui é para indicar em quanto tempo o pedido da pizza deverá ser entregue: em 30 minutos:
     if (results.response) {
       var time = moment().add(30, "m");
@@ -89,7 +89,7 @@ intents.matches("Verificar", (session, results) => {
 });
 
 //Endpoint - Default:
-var teste = intents.onDefault(
+let teste = intents.onDefault(
   builder.DialogAction.send("Desculpe! Mas, não entendi o que você quis pedir!")
 );
 
